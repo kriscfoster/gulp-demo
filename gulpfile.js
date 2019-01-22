@@ -3,6 +3,7 @@ const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
+const mocha = require('gulp-mocha');
 
 gulp.task('sass', function() {
   return gulp
@@ -21,10 +22,10 @@ gulp.task('js', function() {
     .pipe(browserSync.stream());
 });
 
-// Static Server + watching scss/html files
+// Static Server & watching scss/js/html files
 gulp.task('serve', gulp.series('sass', function() {
   browserSync.init({
-        open: false,
+    open: false,
     server: "./"
   });
 
@@ -38,11 +39,13 @@ gulp.task('serve', gulp.series('sass', function() {
 gulp.task('default',
   gulp.series('sass', 'js', 'serve'));
 
-function reload(done) {
-  browserSync.reload();
-  done();
-}
+gulp.task('test', function() {
+	return gulp
+    .src(['test/**/*.js'], {read: false})
+		.pipe(mocha({reporter: 'list', exit: true}))
+		.on('error', console.error)
+});
 
-
-
-
+gulp.task('test-watch', function() {
+  gulp.watch('fizzBuzz.js', gulp.series('test'));
+});

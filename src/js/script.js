@@ -1,3 +1,3 @@
 (function helloWorld() {
-  console.log("abcHello World!");
+  console.log("Hello World!");
 }());
