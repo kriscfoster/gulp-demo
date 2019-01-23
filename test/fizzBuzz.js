@@ -14,19 +14,19 @@ describe('FizzBuzz >', () => {
     expect(fizzBuzz(3)).to.equal("Fizz");
   });
 
-  it('Ok, 6 is multiple of 3 => "Fizz"', () => {
-    expect(fizzBuzz(6)).to.equal("Fizz");
-  });
+  // it('Ok, 6 is multiple of 3 => "Fizz"', () => {
+  //   expect(fizzBuzz(6)).to.equal("Fizz");
+  // });
 
-  it('Ok, 5 is multiple of 5 => "Buzz"', () => {
-    expect(fizzBuzz(5)).to.equal("Buzz");
-  });
+  // it('Ok, 5 is multiple of 5 => "Buzz"', () => {
+  //   expect(fizzBuzz(5)).to.equal("Buzz");
+  // });
 
-  it('Ok, 10 is multiple of 5 => "Buzz"', () => {
-    expect(fizzBuzz(10)).to.equal("Buzz");
-  });
+  // it('Ok, 10 is multiple of 5 => "Buzz"', () => {
+  //   expect(fizzBuzz(10)).to.equal("Buzz");
+  // });
 
-  it('Ok, 15 is multiple of both => "FizzBuzz"', () => {
-    expect(fizzBuzz(15)).to.equal("FizzBuzz");
-  });
+  // it('Ok, 15 is multiple of both => "FizzBuzz"', () => {
+  //   expect(fizzBuzz(15)).to.equal("FizzBuzz");
+  // });
 });

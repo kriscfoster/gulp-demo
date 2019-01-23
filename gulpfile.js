@@ -3,6 +3,7 @@ const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
+const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
 
 gulp.task('sass', function() {
@@ -32,12 +33,20 @@ gulp.task('serve', gulp.series('sass', function() {
   gulp.watch('src/scss/**/*.scss',
     gulp.series('sass'));
   gulp.watch('src/js/**/*.js',
-    gulp.series('js'));
+    gulp.series('js', 'lint'));
   gulp.watch("*.html").on('change', browserSync.reload);
 }));
 
 gulp.task('default',
   gulp.series('sass', 'js', 'serve'));
+
+gulp.task('lint', function() {
+  return gulp
+    .src(['src/js/**/*.js'])
+    .pipe(eslint())
+    .pipe(eslint.format());
+})
+
 
 gulp.task('test', function() {
 	return gulp
@@ -47,5 +56,5 @@ gulp.task('test', function() {
 });
 
 gulp.task('test-watch', function() {
-  gulp.watch('fizzBuzz.js', gulp.series('test'));
+  gulp.watch(['fizzBuzz.js', 'test/**/*.js'], gulp.series('test'));
 });

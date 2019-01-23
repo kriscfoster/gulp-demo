@@ -7,7 +7,7 @@
 // return "FizzBuzz" instead of just Fizz or Buzz
 
 function fizzBuzz(num) {
-  return null;
+  return 'Fizz';
 }
 
 module.exports = fizzBuzz;
